@@ -1,0 +1,291 @@
+body, html {
+  margin: 0;
+  padding: 0;
+     touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+        user-select: none;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/download%20(3).jpg') repeat-y center top;
+    background-size: cover;
+  position: relative;
+  animation: scrollBackground 0.1s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes scrollBackground {
+  0% {
+  background-position: center top;
+  }
+  100% {
+
+      background-position: center bottom;
+  }
+}
+
+
+#player {
+  position: absolute;
+  width: 111px; /* Individual frame width */
+  height: 80px; /* Individual frame height */
+  animation: playerIdle 0.5s steps(2) infinite;
+  z-index: 1;
+}
+
+@keyframes playerIdle {
+  from { background-position: 0; }
+  to { background-position: -222px; } /* Total sprite width */
+}
+
+#joystick {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#joystick .stick {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+@keyframes changeBulletBackground {
+  0% {
+    background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot5_exp2.png');
+  }
+  50% {
+    background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot5_exp1.png');
+  }
+  100% {
+    background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot5_exp2.png');
+  }
+}
+
+.bullet {
+  position: absolute;
+  width: 10px;
+  height: 80px;
+  background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot5_exp2.png') no-repeat center center;
+  background-size: cover;
+  animation: changeBulletBackground 0.2s infinite; /* 1s duration, infinite loop */
+}
+.enemy {
+  width: 100px;
+  height: 100px;
+    background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/cropship2.png') no-repeat center center;
+    background-size: contain;
+  position: absolute;
+}
+
+
+/* Add this CSS to your existing styles or create a new stylesheet */
+/* Add this CSS to your existing styles or create a new stylesheet */
+@keyframes changeenemyBulletBackground {
+  0% {
+    background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot6_1.png');
+  }
+  50% {
+    background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot6_2.png');
+  }
+  100% {
+    background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot6_1.png');
+  }
+}
+
+.enemy-bullet {
+  position: absolute;
+  width: 50px;
+  height: 100px;
+  background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/shot6_1.png') no-repeat center center;
+  background-size: contain;
+  animation: changeenemyBulletBackground 0.5s infinite; /* 0.2s duration, infinite loop */
+}
+
+/* Add explosion effect styles */
+.explosion {
+  width: 64px; /* Adjust size as needed */
+  height: 64px; /* Adjust size as needed */
+  background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/spritesheet%20(13).png'); /* Replace with your explosion image */
+  background-size: cover;
+  position: absolute;
+  animation: explodeAnimation 0.5s steps(6) forwards;
+  z-index: 101; /* Ensure the explosion is above other elements */
+}
+.meteorite {
+    position: absolute;
+    width: 80px; /* Adjust width as needed */
+    height: 80px; /* Adjust height as needed */
+      background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/meteor.png') no-repeat center center;
+        background-size: contain;
+    border-radius: 50%;
+}
+
+/* Define explosion animation */
+@keyframes explodeAnimation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -384px 0; /* Adjust according to your sprite sheet */
+  }
+}
+
+.player-body-explosion {
+                         width: 64px; /* Adjust size as needed */
+                         height: 64px; /* Adjust size as needed */
+                         background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/spritesheet%20(14).png'); /* Replace with your explosion image */
+                         background-size: cover;
+                         position: absolute;
+                         animation: explodeAnimation 0.5s steps(6) forwards;
+                         z-index: 100; /* Ensure the explosion is above other elements */
+                       }
+
+                      .boss {
+                          width: 150px; /* Adjust the width as needed */
+                          height: 150px; /* Adjust the height as needed */
+                          background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/boss.png') no-repeat center center;
+                              background-size: contain;
+                          position: absolute;
+                           z-index: 99;
+                          /* Add any additional styling properties for your boss */
+                      }
+                      /* Add styling for the ultimate boss */
+                      .ultimate-boss {
+                          width: 200px; /* Set the width of the ultimate boss */
+                          height: 200px; /* Set the height of the ultimate boss */
+                       background: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/boss.png') no-repeat center center;
+                           background-size: contain;
+                          position: absolute;
+                          border-radius: 50%; /* Make the boss round */
+                          /* Add any additional styling based on your game's design */
+                          /* You can add background images, animations, etc. */
+                          z-index: 99;
+                      }
+
+                      /* Example: Add an animation for the ultimate boss */
+                      @keyframes bossAnimation {
+                          0% {
+                              transform: scale(1);
+                          }
+                          50% {
+                              transform: scale(1.2);
+                          }
+                          100% {
+                              transform: scale(1);
+                          }
+                      }
+
+                      .ultimate-boss {
+                          animation: bossAnimation 1s infinite; /* Apply the animation to the ultimate boss */
+                      }
+                      .hp-bar {
+                          width: 100%; /* Adjust the width as needed */
+                          height: 5px; /* Adjust the height as needed */
+                          background-color: #5B3D53; /* Set the initial color of the HP bar */
+
+                          /* Add any other styling properties you want */
+                      }
+                      .player-hp-bar {
+                        position: fixed;
+                        bottom: 0px;
+                        width: 100%;
+                        height: 5px;
+                        background-color: #59FFCF; /* Green color for HP bar */
+
+                      }
+
+                      /* CSS for Game Over Screen */
+                      #gameOverScreen {
+                          display: none;
+                          position: fixed;
+                          top: 50%;
+                          left: 50%;
+                          transform: translate(-50%, -50%);
+                          text-align: center;
+                          background-color: rgba(255, 0, 0, 0.8); /* Red background */
+                          padding: 20px;
+                          border-radius: 10px;
+                          color: white;
+                          z-index: 999;
+                      }
+
+                      #gameOverScreen h1 {
+                          margin-bottom: 20px;
+                      }
+
+                      #gameOverScreen button {
+                          padding: 10px 20px;
+                          font-size: 16px;
+                          background-color: white;
+                          color: red;
+                          border: none;
+                          cursor: pointer;
+                          border-radius: 5px;
+                      }
+
+                      /* CSS for Win Screen */
+                      #winScreen {
+                          display: none;
+                          position: fixed;
+                          top: 50%;
+                          left: 50%;
+                          transform: translate(-50%, -50%);
+                          text-align: center;
+                          background-color: rgba(0, 255, 0, 0.8); /* Green background */
+                          padding: 20px;
+                          border-radius: 10px;
+                          color: white;
+                          z-index: 999;
+                      }
+
+                      #winScreen h1 {
+                          margin-bottom: 20px;
+                      }
+
+                      #winScreen button {
+                          padding: 10px 20px;
+                          font-size: 16px;
+                          background-color: white;
+                          color: green;
+                          border: none;
+                          cursor: pointer;
+                          border-radius: 5px;
+                      }
+                      .screen {
+                        display: none;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                        background-color: rgba(0, 0, 0, 0.8);
+                        color: white;
+                        padding: 20px;
+                        border-radius: 10px;
+                      }
+
+                      #gameOverScreen, #winScreen {
+                        z-index: 9999; /* Ensure the screens are on top of other elements */
+                      }
+
+
+
+
+
+
